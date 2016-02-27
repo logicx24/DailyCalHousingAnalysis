@@ -21,6 +21,8 @@ ITEM_PIPELINES = (
 	'CraigslistHousingScraper.pipelines.MongoPipe',
 )
 
+DUPEFILTER_CLASS = 'CraigslistHousingScraper.CustomDupeFilter.CustomDupeFilter'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 ua = UserAgent()
 USER_AGENT = ua.random

@@ -5,6 +5,9 @@ from scrapy.contrib.linkextractors import LinkExtractor
 from CraigslistHousingScraper.items import CraigslistItem
 import datetime
 import time
+import pymongo
+from scrapy.conf import settings
+
 
 class HousingscraperSpider(CrawlSpider):
     name = "housingScraper"
@@ -12,12 +15,14 @@ class HousingscraperSpider(CrawlSpider):
     start_urls = [
         'http://sfbay.craigslist.org/search/apa?s=0&query=berkeley'
     ]
+
     rules = [
     	Rule(LinkExtractor(allow="http:\/\/sfbay\.craigslist\.org\/search\/", deny="http:\/\/sfbay\.craigslist\.org\/eby\/apa\/", \
             restrict_xpaths=["//*[@id='searchform']/div[4]", "//*[@id='searchform']/div[5]/div[3]/span[2]/a[3]"]),\
             follow=True),
 
-    	Rule(LinkExtractor(allow="http:\/\/sfbay\.craigslist\.org\/eby\/apa\/", deny="http:\/\/sfbay\.craigslist\.org\/search\/"), \
+    	Rule(LinkExtractor(allow="http:\/\/sfbay\.craigslist\.org\/eby\/apa\/", \
+            deny=["http:\/\/sfbay\.craigslist\.org\/search\/"]), \
             callback='parse_listing', follow=False)
     ]
 
