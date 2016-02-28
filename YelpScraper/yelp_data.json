@@ -1,0 +1,51 @@
+{
+    "region": {
+        "span": {
+            "latitude_delta": 0.030329000000001827,
+            "longitude_delta": 0.027684000000007813
+        },
+        "center": {
+            "latitude": 37.868891500000004,
+            "longitude": -122.264981
+        }
+    },
+    "total": 765,
+    "businesses": [{
+        // "is_claimed": true,
+        "rating": 4.5,
+        // "mobile_url": "http://m.yelp.com/biz/brazil-fresh-squeeze-cafe-berkeley?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=FmI5xWeT7qEqfRRrPRL8tQ",
+        // "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+        "review_count": 1006,
+        "name": "Brazil Fresh Squeeze Cafe",
+        // "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+        // "url": "http://www.yelp.com/biz/brazil-fresh-squeeze-cafe-berkeley?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=FmI5xWeT7qEqfRRrPRL8tQ",
+        // "is_closed": false,
+        // "id": "brazil-fresh-squeeze-cafe-berkeley",
+        "phone": "5108458011",
+        // "snippet_text": "The force is strong with this cafe, so strong that I could feel the startling amount of love that was put into making the food. As Kylo Ren, Lord Commander...",
+        // "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/SQjCeRDxzFctDcAuXkdjVA/ms.jpg",
+        // "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/ZI4rI1tajxLkZXjOZVOuLA/ms.jpg",
+        // "display_phone": "+1-510-845-8011",
+        // "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+        // "menu_provider": "single_platform",
+        // "menu_date_updated": 1456330078,
+        "categories": [
+            ["Brazilian", "brazilian"]
+        ],
+        "location": {
+            "cross_streets": "Oxford St & West Entrance",
+            "city": "Berkeley",
+            // "display_address": ["2161 University Ave", "Downtown Berkeley", "Berkeley, CA 94704"],
+            // "geo_accuracy": 9.5,
+            "neighborhoods": ["Downtown Berkeley"],
+            "postal_code": "94704",
+            // "country_code": "US",
+            "address": ["2161 University Ave"],
+            "coordinate": {
+                "latitude": 37.872552852207,
+                "longitude": -122.26674645696
+            },
+            "state_code": "CA"
+        }
+    }]
+}
