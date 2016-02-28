@@ -1,1 +1,3 @@
 venv/*
+RentBoardDataCollection/node_modules/*
+RentBoardDataCollection/key.js

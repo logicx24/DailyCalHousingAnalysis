@@ -21,7 +21,7 @@ class CraigslistItem(Item):
     updateDate = Field()
     latitude = Field()
     longitude = Field()
-    reposts = Field()
+    #reposts = Field()
     zipcode = Field()
     bedrooms = Field()
     bathrooms = Field()
