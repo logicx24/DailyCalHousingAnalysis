@@ -22,12 +22,12 @@ northeast_long = -122.251139
 bound = str(southwest_lat) +','+ str(southwest_long) +'|'+ str(northeast_lat) +','+ str(northeast_long)
 
 # Specific Locatioin
-latitude = 0
-longitude = 0
-cll = str(latitude) + str(longitude)
+latitude = 37.853727
+longitude = -122.278823
+cll = str(latitude) + ',' + str(longitude)
 
 # parameter: term, location, limit, cll, bounds
-request = s.search(term, bounds=bound)
+request = s.search(term, bounds = bound)
 
 with open('yelp_data.json', 'w') as fp:
     json.dump(request, fp)
