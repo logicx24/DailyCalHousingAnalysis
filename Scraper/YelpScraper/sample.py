@@ -58,7 +58,7 @@ def request(host, path, url_params=None):
     signed_url = oauth_request.to_url() # the url to put online
 
     print u'Querying {0} ...'.format(url)
-    #print signed_url
+    print signed_url
     conn = urllib2.urlopen(signed_url, None)
     try:
         response = json.loads(conn.read())
@@ -72,13 +72,16 @@ def request(host, path, url_params=None):
     Returns:
         dict: The JSON response from the request.
 """
-def search(term, limit = 1, location = None, cll = None, bounds = None):
-    url_params = {
-        'term': term.replace(' ', '+'),
-        'limit': limit,
-    }
-    if cll != None:
-        url_params['cll'] = cll.replace(' ', '+')
+def search(term = None, limit = None, r = None, ll = None, location = None, bounds = None):
+    url_params = {}
+    if term != None:
+        url_params['term'] = term.replace(' ', '+')
+    if limit != None:
+        url_params['limit'] = limit   
+    if r != None:
+        url_params['radius_filter'] = r
+    if ll != None:
+        url_params['ll'] = ll.replace(' ', '+')
     if bounds != None:
         url_params['bounds'] = bounds
     if location != None:
