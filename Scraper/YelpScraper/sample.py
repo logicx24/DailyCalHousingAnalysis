@@ -72,8 +72,10 @@ def request(host, path, url_params=None):
     Returns:
         dict: The JSON response from the request.
 """
-def search(term = None, limit = None, r = None, ll = None, location = None, bounds = None):
+def search(term = None, limit = None, offset = None, r = None, ll = None, location = None, bounds = None):
     url_params = {}
+    if offset != None:
+        url_params['offset'] = offset
     if term != None:
         url_params['term'] = term.replace(' ', '+')
     if limit != None:

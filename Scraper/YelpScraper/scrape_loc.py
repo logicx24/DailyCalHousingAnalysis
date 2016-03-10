@@ -25,7 +25,7 @@ def loc(latitude, longitude):
 	return str(latitude) + ',' + str(longitude)
 
 # Pull data for every apartment
-# term = None, limit = None, r = None, cll = None, location = None, bounds = None
+# term = None, limit = None, r = None, ll = None, location = None, bounds = None
 f = open("addresses.json")
 data = json.loads(f.read())['addrs']
 size = len(data)
