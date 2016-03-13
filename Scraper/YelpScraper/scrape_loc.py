@@ -2,6 +2,8 @@
 
 import sample as s 
 import json
+import csv
+import pandas as pd 
 
 """ Search Parameters
 limit = 1
@@ -26,13 +28,22 @@ def loc(latitude, longitude):
 
 # Pull data for every apartment
 # term = None, limit = None, r = None, ll = None, location = None, bounds = None
-f = open("addresses.json")
-data = json.loads(f.read())['addrs']
-size = len(data)
+# f = open("summary.csv")
+# data = json.loads(f.read())['addrs']
+# size = len(data)
 
-for i in range(size):
-    ll = loc(data[i][2], data[i][3])
-    request = s.search(term = 'food', limit = 20, ll = ll, r = 640)
-    with open('restaurants.json', 'a') as fp:
-    	json.dump(request, fp)
+# for i in range(size):
+#     ll = loc(data[i][2], data[i][3])
+#     request = s.search(term = 'food', limit = 20, ll = ll)
+#     with open('restaurants.json', 'a') as fp:
+#     	json.dump(request, fp)
+
+df = pd.read_csv('summary.csv')
+size = len(df)
+for i in range(1178, 2262):
+    ll = loc(df['latitude'][i], df['longitude'][i])
+    request = s.search(term = 'food', limit = 20, ll = ll)
+    with open('yelp.json', 'a') as fp:
+        json.dump(request, fp)
+
 

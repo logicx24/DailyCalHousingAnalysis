@@ -3,7 +3,7 @@ import json
 import csv
 
 
-with open('restaurants.json') as d:
+with open('yelp.json') as d:
     RAW = d.read()
 RAW = '[' + RAW.replace('}{', '},{') + ']'
 rest = json.loads(RAW)
@@ -69,7 +69,7 @@ with open('yelp_clean2.json', 'w') as d:
 
 # convert to CSV
 x = json.loads(summary)
-f = csv.writer(open("restaurant.csv", "wb+"))
+f = csv.writer(open("yelp.csv", "wb+"))
 f.writerow(['latitude', 'longitude', 'avg_rating', '#cafes', '#pubs'])
 
 for x in x:
