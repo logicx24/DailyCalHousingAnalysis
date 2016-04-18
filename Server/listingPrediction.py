@@ -15,7 +15,8 @@ import time
 import json
 import csv
 
-now = datetime.datetime.now()
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 def mongoConnection():
     return pymongo.MongoClient().HousingListings.listings
@@ -63,7 +64,8 @@ class Classifier(object):
             distance = np.nan
        
         images = listing['numImages']
-        uniqueWords = len(listing['description'].split(" "))
+        uniqueWords = len(listing['description'].replace("\n"," ").split(" "))
+        print uniqueWords
 
         # if "postingDate" in listing:
         #     currTime = (self.now - datetime.datetime.fromtimestamp(listing['postingDate'])).days
@@ -125,7 +127,8 @@ class Classifier(object):
     def linkToVector(self, link):
         r = requests.get(link)
         response = tree = html.fromstring(r.text)
-        
+        #add in title, count number of important words in each
+        #Check what sector of campus this is in - north, south, east, west
         item = {}
         curr = response.xpath("//*[@id='pagecontainer']/section/section/div[2]/p[2]/time/text()")[0].split()[0]
         item["postingDate"] = int(time.mktime(datetime.datetime.strptime(curr, "%Y-%m-%d").timetuple()))
@@ -157,23 +160,24 @@ class Classifier(object):
         return self.featurize(item)
 
     def train(self):
-        final = KernelRidge(alpha=.1, kernel="linear")
+        #final = KernelRidge(alpha=.1, kernel="linear")
+        final = Ridge(alpha=10, fit_intercept=True)
         self.csvToArray()
         final.fit(self.feats, self.labels)
         self.model = final
 
     def predictionFromLink(self, link):
         vector = self.imp.transform(self.linkToVector(link))
-        return self.model.predict(vector)
+        return self.model.predict(vector.reshape(1,-1))[0]
 
     def predict(self, vector):
-        return self.model.predict(self.imp.transform(vector))
+        return self.model.predict(self.imp.transform(vector).reshape(1,-1))[0]
 
 if __name__ == "__main__":
-    jsonDump()
+    #jsonDump()
     classifier = Classifier()
-    classifier.csvDump()
+    #classifier.csvDump()
     classifier.train()
-    print classifier.predictionFromLink("https://sfbay.craigslist.org/eby/apa/5538251140.html")
+    print classifier.predictionFromLink("https://sfbay.craigslist.org/eby/apa/5511113540.html")
 
 
