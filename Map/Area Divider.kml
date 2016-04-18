@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Area Divider</name>
+		<Placemark>
+			<name>NorthSide</name>
+			<description><![CDATA[* Room Price: 1975.0 USD<br>($173 more than the Berkeley average)<br>* Room Size: 470.0 sqft<br>* Distance to Campus: 0.61 miles<br>* Number of Bedrooms: 1.74<br>* Restaurant Ratings: 4.05 out of 5 stars<br>* 4.42 Cafes around<br>* 1.52 Pubs around]]></description>
+			<styleUrl>#poly-F4EB37-1-76</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.283501,37.880567,0.0 -122.2822952,37.8721433,0.0 -122.25646019999999,37.8757341,0.0 -122.26349100000002,37.883039,0.0 -122.283501,37.880567,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>Far NorthSide</name>
+			<description><![CDATA[* Room Price: 1750.0 USD<br> ($52 less than the Berkeley campus average)<br>* Room Size: 537.5 sqft<br>* Distance to Campus: 1.67 miles<br>* Number of Bedrooms: 2.08<br>* Restaurant Ratings: 4.05 out of 5 stars<br>* 3.28 Cafes around<br>* 1.48 Pubs around]]></description>
+			<styleUrl>#poly-C6A4CF-0-143</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.30323790000001,37.8779699,0.0 -122.26349100000002,37.883039,0.0 -122.26456399999998,37.891353,0.0 -122.30581279999998,37.887454,0.0 -122.30323790000001,37.8779699,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>Far SouthSide</name>
+			<description><![CDATA[* Room Price: 1735.0 USD<br>($67 less than the Berkeley average)<br>* Room Size: 500.0 sqft<br>* Distance to Campus: 2.35 miles<br>* Number of Rooms shared in the Apartment: 1.84<br>* Restaurant Ratings: 4.0 out of 5 stars<br>* 3.72 Cafes around<br>* 1.36 Pubs around]]></description>
+			<styleUrl>#poly-62AF44-0-122</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.29482649999999,37.850594599999994,0.0 -122.2916508,37.83886900000001,0.0 -122.24255559999999,37.84679920000001,0.0 -122.24540999999999,37.85843700000001,0.0 -122.29482649999999,37.850594599999994,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>South West</name>
+			<description><![CDATA[* Room Price: 1766.0 USD<br>($36 less than the Berkeley average)<br>* Room Size: 475.0 sqft<br>* Distance to Campus: 1.27 miles<br>* Number of Bedrooms: 1.7<br>* Restaurant Ratings: 4.075 out of 5 stars<br>* 2.58 Cafes around<br>* 1.66 Pubs around]]></description>
+			<styleUrl>#poly-A61B4A-0-125</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.28126530000002,37.866113,0.0 -122.2790337,37.8531361,0.0 -122.265888,37.855198,0.0 -122.266416,37.867565,0.0 -122.28126530000002,37.866113,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>SouthSide</name>
+			<description><![CDATA[* Room Price: 1890.5 USD<br>($88.5 more than the Berkeley average)<br>* Room Size: 438.0 sqft<br>* Distance to Campus: 0.69 miles<br>* Number of Bedrooms: 1.97<br>* Restaurant Ratings: 4.025 out of 5 stars<br>* 1.51 Cafes around<br>* 1.5 Pubs around]]></description>
+			<styleUrl>#poly-F8971B-0-120</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.266416,37.867565,0.0 -122.265888,37.855198,0.0 -122.24540999999999,37.85843700000001,0.0 -122.2507095,37.8699752,0.0 -122.266416,37.867565,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>WestSide</name>
+			<description><![CDATA[* Room Price: 1695.0 USD<br>($107 less than the Berkeley average)<br>* Room Size: 375.0 sqft<br>* Distance to Campus: 0.75 miles<br>* Number of Bedrooms: 1.42<br>* Restaurant Ratings: 3.975 out of 5 stars<br>* 2.98 Cafes around<br>* 1.73 Pubs around]]></description>
+			<styleUrl>#poly-0BA9CC-1-105</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.2822952,37.8721433,0.0 -122.28126530000002,37.866113,0.0 -122.2657299,37.8677392,0.0 -122.26628900000001,37.87418,0.0 -122.2822952,37.8721433,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>Far WestSide</name>
+			<description><![CDATA[* Room Price: 1675.0 USD<br>($127 less than the Berkeley average)<br>* Room Size: 494.0 sqft<br>* Distance to Campus: 2.23 miles<br>* Number of Bedrooms: 1.55<br>* Restaurant Ratings: 4.025 out of 5 stars<br>* 3.97 Cafes around<br>* 1.52 Pubs around]]></description>
+			<styleUrl>#poly-795046-0-112</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>-122.30323790000001,37.8779699,0.0 -122.29482649999999,37.850594599999994,0.0 -122.2790337,37.8531361,0.0 -122.283501,37.880567,0.0 -122.30323790000001,37.8779699,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Style id='poly-0BA9CC-1-105-normal'>
+			<LineStyle>
+				<color>ffCCA90B</color>
+				<width>1</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>69CCA90B</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-0BA9CC-1-105-highlight'>
+			<LineStyle>
+				<color>ffCCA90B</color>
+				<width>2.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>69CCA90B</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-0BA9CC-1-105'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-0BA9CC-1-105-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-0BA9CC-1-105-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-62AF44-0-122-normal'>
+			<LineStyle>
+				<color>ff44AF62</color>
+				<width>0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>7A44AF62</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-62AF44-0-122-highlight'>
+			<LineStyle>
+				<color>ff44AF62</color>
+				<width>0.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>7A44AF62</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-62AF44-0-122'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-62AF44-0-122-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-62AF44-0-122-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-795046-0-112-normal'>
+			<LineStyle>
+				<color>ff465079</color>
+				<width>0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>70465079</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-795046-0-112-highlight'>
+			<LineStyle>
+				<color>ff465079</color>
+				<width>0.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>70465079</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-795046-0-112'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-795046-0-112-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-795046-0-112-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-A61B4A-0-125-normal'>
+			<LineStyle>
+				<color>ff4A1BA6</color>
+				<width>0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>7D4A1BA6</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-A61B4A-0-125-highlight'>
+			<LineStyle>
+				<color>ff4A1BA6</color>
+				<width>0.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>7D4A1BA6</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-A61B4A-0-125'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-A61B4A-0-125-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-A61B4A-0-125-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-C6A4CF-0-143-normal'>
+			<LineStyle>
+				<color>ffCFA4C6</color>
+				<width>0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>8FCFA4C6</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-C6A4CF-0-143-highlight'>
+			<LineStyle>
+				<color>ffCFA4C6</color>
+				<width>0.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>8FCFA4C6</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-C6A4CF-0-143'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-C6A4CF-0-143-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-C6A4CF-0-143-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-F4EB37-1-76-normal'>
+			<LineStyle>
+				<color>ff37EBF4</color>
+				<width>1</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>4C37EBF4</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-F4EB37-1-76-highlight'>
+			<LineStyle>
+				<color>ff37EBF4</color>
+				<width>2.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>4C37EBF4</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-F4EB37-1-76'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-F4EB37-1-76-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-F4EB37-1-76-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-F8971B-0-120-normal'>
+			<LineStyle>
+				<color>ff1B97F8</color>
+				<width>0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>781B97F8</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-F8971B-0-120-highlight'>
+			<LineStyle>
+				<color>ff1B97F8</color>
+				<width>0.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>781B97F8</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-F8971B-0-120'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-F8971B-0-120-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-F8971B-0-120-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>
