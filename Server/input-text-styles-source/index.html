@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <!-- title and meta -->
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1.0" name="viewport">
+  <meta content="" name="Various CSS input text styles that are great for giving forms on your site a more welcoming and appealing look, done with straight up CSS.">
+
+  <title>Various CSS Input Text Styles</title>
+
+  <!-- css -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+  <link href="css/font-awesome/font-awesome.css" rel="stylesheet">
+  <link href="css/base.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- js -->
+  <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div id="wrapper">
+  
+  <div id="main">
+    <div class="container">
+      
+      <section class="flat">
+        <h2>Price Predictor</h2>
+        <ul class="input-list style-1 clearfix">
+          <li>
+            <input type="text" id="linkInput" placeholder="Enter a Craigslist Apartment Listing Link">
+          </li>
+          <li>
+            <button id="linkSubmit">Button</button>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </div><!-- #main -->
+  
+</div><!-- /#wrapper -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript">
+function handler (data) {
+    console.log(data);    
+  }
+
+$("#linkSubmit").click(function () {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:5000/classify?link=" + $("#linkInput").val(), 
+    dataType: "jsonp",
+    data: {},
+    crossDomain: true,
+    contentType: "application/json",
+    jsonpCallback: "resp",
+    jsonp: false,
+    success: function (data) {
+      console.log("data")
+    }
+  })
+
+});
+</script>
+
+</body>
+</html>
