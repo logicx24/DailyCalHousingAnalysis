@@ -1,0 +1,9 @@
+
+2 Area Divider Map:
+
+https://www.google.com/maps/d/edit?hl=en_US&app=mp&mid=zPokVQ1ZcjGc.kyW71epnUY7s
+
+
+To embed this map in your own website, copy the following HTML and paste it in the source code for your page:
+
+<iframe src="https://www.google.com/maps/d/embed?mid=1HbSkkL5oic6QViuHF_I6V1EeZ04" width="640" height="480"></iframe>
