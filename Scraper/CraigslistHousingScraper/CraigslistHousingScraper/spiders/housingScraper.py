@@ -30,7 +30,6 @@ class HousingscraperSpider(CrawlSpider):
         item = CraigslistItem()
 
         #stolen (and modified) from some dude on the internet cause fuck xpath - https://github.com/jayfeng1/Craigslist-Pricing-Project/blob/master/craigslist/spiders/CraigSpyder.py
-        #import pdb; pdb.set_trace()
         #
         #temp = postings[i].xpath("span[@class='txt']")
         #info = temp.xpath("span[@class='pl']")
@@ -57,13 +56,23 @@ class HousingscraperSpider(CrawlSpider):
         attr = response.xpath("//p[@class='attrgroup']")
         try:
             item["bedrooms"] = int(attr.xpath("span/b/text()")[0].extract())
+        except:
+            pass
+        try:
             bath = attr.xpath("span/b/text()")[1].extract()
+        except:
+            pass
+        try:    
             item["sqft"] = int(''.join(attr.xpath("span")[1].xpath("b/text()").extract()))
+        except:
+            pass
+        try:
             if(bath.isdigit()):
                 item["bathrooms"] = int(attr.xpath("span/b/text()")[1].extract())
             item["bathrooms"] = int(bath)
         except:
             pass
+
         item['description'] = "".join(response.xpath("//section[@id='postingbody']").xpath("text()").extract()) 
         item["numImages"] = len(response.xpath("//div[@id='thumbs']").xpath("a"))
         return item

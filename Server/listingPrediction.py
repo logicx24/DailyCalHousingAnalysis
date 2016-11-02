@@ -7,7 +7,10 @@ import datetime
 from sklearn.svm import SVR
 from sklearn.linear_model import Ridge
 from sklearn.kernel_ridge import KernelRidge
+from sklearn.linear_model import LogisticRegression
+
 from sklearn.preprocessing import Imputer
+from sklearn import cross_validation
 
 import requests
 from lxml import html
@@ -22,14 +25,13 @@ def mongoConnection():
 
 def jsonDump():
     with open("listings.json", 'w') as out:
-        listings = list(mongoConnection().find({"sqft": {"$exists": True}, 
-                              "bathrooms": {"$exists": True},
+        listings = list(mongoConnection().find({
                               "latitude": {"$exists": True},
-                              "bedrooms": {"$exists": True},
                               "longitude": {"$exists": True},
                               "numImages": {"$exists": True},
                               "description": {"$exists": True},
                              }))
+        print(len(listings))
         for i in range(len(listings)):
             listings[i].pop("_id")
         json.dump({"listings" :listings}, out, ensure_ascii=True)
@@ -66,7 +68,7 @@ class Classifier(object):
         uniqueWords = len(listing['description'].split(" "))
 
         # if "postingDate" in listing:
-        #     currTime = (self.now - datetime.datetime.fromtimestamp(listing['postingDate'])).days
+        time_up = (self.now - datetime.datetime.fromtimestamp(listing['postingDate'])).days
         # else:
         #     currTime = 0#self.nowfn() - datetime.datetime.fromtimestamp(self.nowfn()).days
 
@@ -134,6 +136,9 @@ class Classifier(object):
         latitude = ''.join(maplocation[0].xpath('@data-latitude'))
         longitude = ''.join(maplocation[0].xpath('@data-longitude'))
         tmp = response.xpath("//*[@id='pagecontainer']/section/section/div[1]/div[1]/div[2]/text()")
+
+        chars_to_remove = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
         if len(tmp) > 0:
             item['address'] = tmp[0]
         if latitude:
@@ -141,15 +146,15 @@ class Classifier(object):
         if longitude:
             item['longitude'] = float(longitude)
         try:
-            item["bedrooms"] = float(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[1]/b[1]/text()")[0])
+            item["bedrooms"] = float(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[1]/b[1]/text()")[0].translate(None, chars_to_remove))
         except IndexError:
             pass
         try:
-            item["sqft"] = float(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[2]/b/text()")[0])
+            item["sqft"] = float(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[2]/b/text()")[0].translate(None, chars_to_remove))
         except IndexError:
             pass
         try:    
-            item["bathrooms"] = float(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[1]/b[2]/text()")[0])
+            item["bathrooms"] = float(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[1]/b[2]/text()")[0].translate(None, chars_to_remove))
         except IndexError:
             pass
         item['description'] = "".join(response.xpath("//section[@id='postingbody']/text()"))
@@ -157,7 +162,7 @@ class Classifier(object):
         return self.featurize(item)
 
     def train(self):
-        final = KernelRidge(alpha=.1, kernel="linear")
+        final = KernelRidge(alpha=.01, kernel="linear")
         self.csvToArray()
         final.fit(self.feats, self.labels)
         self.model = final
@@ -169,11 +174,19 @@ class Classifier(object):
     def predict(self, vector):
         return self.model.predict(self.imp.transform(vector))
 
+    def cross_validate(self):
+        final = KernelRidge(alpha=.1, kernel="linear")
+        self.csvToArray()
+        return cross_validation.cross_val_score(final, self.feats, self.labels, cv=9)
+
 if __name__ == "__main__":
     jsonDump()
     classifier = Classifier()
     classifier.csvDump()
-    classifier.train()
-    print classifier.predictionFromLink("https://sfbay.craigslist.org/eby/apa/5538251140.html")
+    scores = classifier.cross_validate()
+    print scores
+    print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+    # classifier.train()
+    # print classifier.predictionFromLink("https://sfbay.craigslist.org/eby/apa/5795893919.html")
 
 
