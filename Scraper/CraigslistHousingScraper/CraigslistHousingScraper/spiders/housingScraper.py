@@ -54,22 +54,25 @@ class HousingscraperSpider(CrawlSpider):
         if longitude:
             item['longitude'] = float(longitude)
         attr = response.xpath("//p[@class='attrgroup']")
+
+        chars_to_remove = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
         try:
-            item["bedrooms"] = int(attr.xpath("span/b/text()")[0].extract())
-        except:
+            beds = str(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[1]/b[1]/text()").extract()[0]).translate(None, chars_to_remove)
+            if beds == "":
+                beds = "1"
+            item["bedrooms"] = float(beds)
+        except IndexError:
             pass
-        try:
-            bath = attr.xpath("span/b/text()")[1].extract()
-        except:
+        try:    
+            baths = str(response.xpath("//*[@id='pagecontainer']/section/section/div[1]/p[1]/span[1]/b[2]/text()").extract()[0]).translate(None, chars_to_remove)
+            if baths == "":
+                baths = 1
+            item["bathrooms"] = float(baths)
+        except IndexError:
             pass
         try:    
             item["sqft"] = int(''.join(attr.xpath("span")[1].xpath("b/text()").extract()))
-        except:
-            pass
-        try:
-            if(bath.isdigit()):
-                item["bathrooms"] = int(attr.xpath("span/b/text()")[1].extract())
-            item["bathrooms"] = int(bath)
         except:
             pass
 

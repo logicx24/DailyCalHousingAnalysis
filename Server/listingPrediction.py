@@ -3,6 +3,8 @@ import pymongo
 from geopy.distance import vincenty
 import datetime
 
+from math import cos
+
 #Choose one.
 from sklearn.svm import SVR
 from sklearn.linear_model import Ridge
@@ -17,8 +19,6 @@ from lxml import html
 import time
 import json
 import csv
-
-now = datetime.datetime.now()
 
 def mongoConnection():
     return pymongo.MongoClient().HousingListings.listings
@@ -60,26 +60,39 @@ class Classifier(object):
             sqft = np.nan
 
         if "latitude" in listing and "longitude" in listing:
-            distance = self.get_distance(listing['latitude'], listing['longitude'])
+            #distance = self.get_distance(listing['latitude'], listing['longitude'])
+            distance = self.bounding_dist(listing['latitude'], listing['longitude'])
         else:
             distance = np.nan
        
         images = listing['numImages']
         uniqueWords = len(listing['description'].split(" "))
 
-        # if "postingDate" in listing:
         time_up = (self.now - datetime.datetime.fromtimestamp(listing['postingDate'])).days
-        # else:
-        #     currTime = 0#self.nowfn() - datetime.datetime.fromtimestamp(self.nowfn()).days
 
-        return np.array([bedrooms, bathrooms, sqft, distance, images, uniqueWords])
+        return np.array([bedrooms, bathrooms, sqft, distance, images, uniqueWords, time_up])
 
     def cols(self):
-        return ['bedrooms', 'bathrooms', 'sqft', 'distance_to_campus', 'num_images', 'unique_words', 'price']
+        return ['bedrooms', 'bathrooms', 'sqft', 'distance_to_campus', 'num_images', 'unique_words', 'postingDate', 'price']
 
     def get_distance(self, lat, lon):
         center = (37.872105, -122.259470)
         return vincenty(center, (lat, lon)).miles 
+
+    def bounding_dist(self, lat, lon):
+
+        top_left_t = (37.874185, -122.266381)
+        bot_right_t = (37.869671, -122.252347)
+
+        def long_dist_func(lat):
+            return cos(lat) * lat_dist_func()
+
+        def lat_dist_func():
+            return 69.172
+
+        lat_dist = min(abs(lat - top_left_t[0])*lat_dist_func(), abs(lat-bot_right_t[0])*lat_dist_func())
+        lon_dist = min(long_dist_func(lat)*abs(top_left_t[1] - lon), long_dist_func(lat)*abs(bot_right_t[1] - lon))
+        return (lat_dist**2 + lon_dist**2)**0.5
 
     def featurized(self, cursor):
         x = []
@@ -103,7 +116,7 @@ class Classifier(object):
                 x.append([float(val) for val in row[:-1]])
         x = np.array(x)
         y = np.array(y)
-        imp, x_imp = self.genImputer(x, "mean")
+        imp, x_imp = self.genImputer(x, "median")
 
         self.feats = x_imp
         self.labels = y
@@ -162,7 +175,7 @@ class Classifier(object):
         return self.featurize(item)
 
     def train(self):
-        final = KernelRidge(alpha=.01, kernel="linear")
+        final = Ridge(alpha=.1)
         self.csvToArray()
         final.fit(self.feats, self.labels)
         self.model = final
@@ -174,19 +187,24 @@ class Classifier(object):
     def predict(self, vector):
         return self.model.predict(self.imp.transform(vector))
 
-    def cross_validate(self):
-        final = KernelRidge(alpha=.1, kernel="linear")
+    def cross_validate(self, alpha=.1):
+        final = Ridge(alpha=alpha)
         self.csvToArray()
-        return cross_validation.cross_val_score(final, self.feats, self.labels, cv=9)
+        return cross_validation.cross_val_score(final, self.feats, self.labels, cv=10)
 
 if __name__ == "__main__":
     jsonDump()
     classifier = Classifier()
     classifier.csvDump()
-    scores = classifier.cross_validate()
-    print scores
-    print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+    classifier.train()
+    for alpha in [0.001, 0.01, 0.1, 1, 10, 0.8]:
+        print "-------------------------------------------"
+        print alpha
+        scores = classifier.cross_validate(alpha)
+        print scores
+        print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+        print "-------------------------------------------"
     # classifier.train()
-    # print classifier.predictionFromLink("https://sfbay.craigslist.org/eby/apa/5795893919.html")
+    print classifier.predictionFromLink("http://sfbay.craigslist.org/eby/apa/5849230189.html")
 
 
